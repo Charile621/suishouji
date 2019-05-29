@@ -1,9 +1,11 @@
 package com.suishouji.view;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -43,7 +45,7 @@ public class InstructActivity extends BaseActivity implements View.OnClickListen
                 TextView enter = (TextView)view.findViewById(R.id.instruct_enter);
                 Typeface bottomTypeface = Typeface.createFromAsset(getAssets(),"Zeuty Demo.ttf");
                 enter.setTypeface(Typeface.create(bottomTypeface,Typeface.BOLD));
-                enter.setText("Enter In");
+                enter.setText("Enter");
                 enter.setTag("enter");
                 enter.setOnClickListener(this);
             }
@@ -103,7 +105,10 @@ public class InstructActivity extends BaseActivity implements View.OnClickListen
     }
     private void enterMainActivity()
     {
-
+        Log.d("123123113","45646546565465456465456465");
+        Intent intent = new Intent(InstructActivity.this,LoginActivity.class);
+        startActivity(intent);
+        //finish();
     }
     private class PageChangeListener implements ViewPager.OnPageChangeListener
     {

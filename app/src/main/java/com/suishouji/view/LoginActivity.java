@@ -1,44 +1,80 @@
 package com.suishouji.view;
 
 
-import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.suishouji.R;
 
-
 public class LoginActivity extends BaseActivity {
 
-    private RecyclerView mRecyclerView;
-    TextView top;
-    TextView bottom;
+    private EditText account;
+    private EditText password;
+    private Button login;
+    private ImageView account_line;
+    private ImageView password_line;
+    private TextView find_password;
+    private TextView sign_up;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
-        top=(TextView)findViewById(R.id.top_text);
-        bottom=(TextView)findViewById(R.id.bottom_text);
-        mRecyclerView = (RecyclerView) findViewById(R.id.imageRecyclerView);
-        Typeface topTypeface = Typeface.createFromAsset(getAssets(),"Yahoo.ttf");
-        top.setTypeface(Typeface.create(topTypeface,Typeface.BOLD));
-        top.setText("随手记");
-        Typeface bottomTypeface = Typeface.createFromAsset(getAssets(),"Zeuty Demo.ttf");
-        bottom.setTypeface(Typeface.create(bottomTypeface,Typeface.BOLD));
-        bottom.setText("Enter In");
-        mRecyclerView.setAdapter(new SplashAdapter(LoginActivity.this));
-        mRecyclerView.setLayoutManager(new ScrollLinearLayoutManger(LoginActivity.this));
-        mRecyclerView.smoothScrollToPosition(Integer.MAX_VALUE/2);
-        bottom.setOnClickListener(new View.OnClickListener() {
+        account = (EditText)findViewById(R.id.account);
+        password = (EditText)findViewById(R.id.password);
+        login = (Button)findViewById(R.id.login);
+        account_line = (ImageView)findViewById(R.id.account_line);
+        password_line = (ImageView)findViewById(R.id.password_line);
+        sign_up = (TextView)findViewById(R.id.sign_up);
+        find_password = (TextView)findViewById(R.id.find_password);
+        account.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,InstructActivity.class);
-                startActivity(intent);
+            public void onFocusChange(View view, boolean b) {
+                if(b)
+                {
+                    account_line.setEnabled(true);
+                    password_line.setEnabled(false);
+                }
+                else
+                {
+                    account_line.setEnabled(false);
+                }
+            }
+        });
+        password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b)
+                {
+                    password_line.setEnabled(true);
+                    account_line.setEnabled(false);
+                }
+                else
+                {
+                    password_line.setEnabled(false);
+                }
+            }
+        });
+        sign_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        find_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
